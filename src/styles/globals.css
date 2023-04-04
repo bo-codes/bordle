@@ -105,3 +105,108 @@ a {
     color-scheme: dark;
   }
 }
+
+.main {
+  width: 100vw;
+  /* height: 100vh; */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  background-color: rgb(61, 61, 61);
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+}
+
+#guess {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.guess-letter {
+  width: 63px;
+  height: 63px;
+  border: 2px solid grey;
+  background-color: rgba(0, 0, 0, 0.451);
+  /* background-color: #2c2c2c; */
+  background-color: #1f025e;
+  background-color: #0b2cb1;
+  background-color: var(--backgroundColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#title {
+  font-size: 50px;
+  margin-bottom: 30px;
+}
+
+#wl-options {
+  width: 180px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.wl-option {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1f025e;
+  color: #ffffff6a;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.chosen {
+  color: #ffffff;
+}
+
+#won-txt {
+  margin: 10px 0;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#lost-txt {
+  margin: 10px 0;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#reveal-txt {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* QWERTY */
+#whole-kb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.kb-row {
+  display: flex;
+  justify-content: center;
+}
+.kb-char {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  /* border: 1px solid blue; */
+}
+
+
+/* FLIPPER CSS */
