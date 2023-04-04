@@ -34,8 +34,8 @@ export default observer(function Home() {
       <div class="modal-container"></div>
       {store.won || store.lost && (
         <Modal onClose={handleClose}>
-          {store.won && <div id='won-txt'>YOU WON 'o'</div>}
-          {store.lost && <div id='lost-txt'>YOU LOST '_'</div>}
+          {store.won && <div id='won-txt'>YOU WON &#39;o&#39;</div>}
+          {store.lost && <div id='lost-txt'>YOU LOST &#39;_&#39;</div>}
           {store.lost && <div id='reveal-txt'>
               <div id='tww'>The word was:</div>
               <div id='revealed-word'>{store.word}</div>
