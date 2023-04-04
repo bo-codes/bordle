@@ -11007,4 +11007,16 @@ const chooseWords = (len) => {
   });
 };
 
+const getWord = async(len) => {
+  const word = await fetch(`https://random-word-api.herokuapp.com/word?length=${len}`)
+    .then((response) => {
+      if (!response.ok) return;
+      return response.json();
+    })
+    .then((data) => {
+      return data[0]
+    });
+  return word;
+}
+
 export default chooseWords;

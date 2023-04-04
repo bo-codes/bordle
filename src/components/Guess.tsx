@@ -7,7 +7,7 @@ const Guess = ({word, wl, isGuessed, guess}) => {
     }
     return (arr.join(' '))
   }
-
+  console.log(word, 'before split')
   let used = word.split('');
 
   return (
@@ -16,15 +16,26 @@ const Guess = ({word, wl, isGuessed, guess}) => {
         const BGColor = !isGuessed
           ? 'black'
           : guess[i] === word[i]
-          ? '#0b2cb1'
+          ? '#005ac0'
           : used.includes(guess[i])
           ? '#1f025e'
           : 'black'
           if (used.includes(guess[i])) {
             used.splice(used.indexOf(guess[i]), 1)
           }
-        return <div key={i} className="guess-letter" style={{
-          "--backgroundColor": BGColor
+        const flipOrNot = !isGuessed
+          ? ''
+          : guess[i] === word[i]
+          ? 'flip'
+          : used.includes(guess[i])
+          ? 'flip'
+          : 'flip'
+          if (used.includes(guess[i])) {
+            used.splice(used.indexOf(guess[i]), 1)
+          }
+        return <div key={i} className={`guess-letter ${flipOrNot}`} style={{
+          "--backgroundColor": BGColor,
+          animationDelay: `${i * 480}ms`
         }}>{guess[i]}</div>
       })}
     </div>

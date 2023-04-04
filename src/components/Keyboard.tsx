@@ -8,12 +8,12 @@ const Keyboard = ({store}) => {
         return <div className="kb-row" key={i}>
           {row.split('').map((char, i) => {
             const bgColor = store.exactGuesses.includes(char)
-            ? '#0b2cb1'
+            ? '#007dc0'
             : store.inexactGuesses.includes(char)
             ? '#1f025e'
             : store.allGuesses.includes(char)
-            ? 'grey' :
-            '#2c2c2c'
+            ? '#2c2c2c' :
+            'grey'
             return <div className="kb-char" style={{backgroundColor: bgColor}} key={i}>{char}</div>
           })}
         </div>

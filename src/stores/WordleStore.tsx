@@ -13,7 +13,14 @@ export default {
   get lost (){
     return !this.won && this.currGuess >= this.wordLength + 1
   },
-  init() {
+  init () {
+    // USING THE HEROKU API
+    // const getWord = async() => {
+    //   this.word = await wordList(this.wordLength)
+    // }
+    // getWord()
+
+    // USING OUR OWN LIST
     let wordsArr = wordList(this.wordLength);
     let  randomWord = wordsArr[Math.floor(Math.random() * wordsArr.length)];
     this.word = randomWord
@@ -26,9 +33,7 @@ export default {
       if (!response.ok) return;
       return response.json()
       }).then((data) => {
-        // console.log(data)
-        // if(data.title === 'No Definitions Found') return
-        if (data) {
+        if (data && this.guesses[this.currGuess].length === this.wordLength) {
           runInAction(() => {
             this.currGuess += 1
           })
