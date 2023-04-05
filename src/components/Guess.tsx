@@ -7,7 +7,7 @@ const Guess = ({word, wl, isGuessed, guess}) => {
     }
     return (arr.join(' '))
   }
-  console.log(word, 'before split')
+
   let used = word.split('');
 
   return (

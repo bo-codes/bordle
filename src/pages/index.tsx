@@ -16,23 +16,10 @@ export default observer(function Home() {
     setShowModal(false);
   }
 
-  const handlePlayAgain = () => {
-    store.init()
-  }
-
-  useEffect(() => {
-    store.wordLength = wordLength
-    store.init();
-    window.addEventListener('keyup', store.handleType)
-    return () => {
-      window.removeEventListener('keyup', store.handleType)
-    }
-  },[wordLength])
-
-  return (
-    <div className='main'>
-      <div class="modal-container"></div>
-      {store.won || store.lost && (
+  const activateModal = () => {
+    // console.log('modal activating')
+    setTimeout(() => {
+      return (
         <Modal onClose={handleClose}>
           {store.won && <div id='won-txt'>YOU WON &#39;o&#39;</div>}
           {store.lost && <div id='lost-txt'>YOU LOST &#39;_&#39;</div>}
@@ -42,7 +29,49 @@ export default observer(function Home() {
             </div>}
           <div id='play-again' onClick={handlePlayAgain}>Play Again</div>
         </Modal>
-      )}
+      )
+    }, calcModalDelay(wordLength))
+  }
+
+  const handlePlayAgain = () => {
+    store.init()
+    setShowModal(false);
+    // window.location.reload(false);
+  }
+
+  useEffect(() => {
+    setShowModal(false);
+    store.wordLength = wordLength
+    store.init();
+    window.addEventListener('keyup', store.handleType)
+    return () => {
+      window.removeEventListener('keyup', store.handleType)
+    }
+  },[wordLength])
+
+  const calcModalDelay = (wl) => {
+    let totalMs = 0;
+    for (let i = 0; i < wl; i++) {
+      totalMs += i * 480;
+    }
+    return totalMs;
+  }
+
+  return (
+    <div className='main'>
+      <div class="modal-container"></div>
+      {(store.won || store.lost) && (
+          <Modal onClose={handleClose}>
+            {store.won && <div id='won-txt'>YOU WON &#39;o&#39;</div>}
+            {store.lost && <div id='lost-txt'>YOU LOST &#39;_&#39;</div>}
+            {store.lost && <div id='reveal-txt'>
+                <div id='tww'>The word was:</div>
+                <div id='revealed-word'>{store.word}</div>
+              </div>}
+            <div id='play-again' onClick={handlePlayAgain}>Play Again</div>
+          </Modal>
+        )
+      }
       <h1 id='title'>Bordle</h1>
       {store.guesses.map((_, i) => (
         <Guess word={store.word} wl={store.wordLength} key={i} isGuessed={i < store.currGuess} guess={store.guesses[i]}/>
