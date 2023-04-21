@@ -59,7 +59,7 @@ export default observer(function Home() {
 
   return (
     <div className='main'>
-      <div class="modal-container"></div>
+      <div className="modal-container"></div>
       {(store.won || store.lost) && (
           <Modal onClose={handleClose}>
             {store.won && <div id='won-txt'>YOU WON &#39;o&#39;</div>}

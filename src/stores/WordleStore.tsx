@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { runInAction } from 'mobx'
-import wordList from '../../words'
+import wordList from '../../words.mjs'
 
 export default {
   word: '',
@@ -33,7 +33,7 @@ export default {
       if (!response.ok) return;
       return response.json()
       }).then((data) => {
-        if (data && this.guesses[this.currGuess].length === this.wordLength) {
+        if ((data && this.guesses[this.currGuess].length === this.wordLength) || this.guesses[this.currGuess] === this.word) {
           runInAction(() => {
             this.currGuess += 1
           })
